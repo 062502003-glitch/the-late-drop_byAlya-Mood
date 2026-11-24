@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Late Drop: Barik Edition — Made by Alya's Mood wkwkwk</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #141414;
+      --bg-card: #1C1C1C;
+      --accent-red: #E63956;
+      --accent-red-hover: #ff4766;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Tekstur latar merah editorial untuk bagian Arsip */
+    .red-editorial-bg {
+      background:
+        linear-gradient(135deg, rgba(230, 57, 86, 0.92) 0%, rgba(168, 28, 52, 0.94) 100%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 2px, transparent 2px, transparent 8px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #141414; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: #E63956; }
+
+    /* Transisi Tahapan (Stage) */
+    .stage-section {
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .stage-hidden {
+      display: none;
+    }
+    .stage-fade-in {
+      animation: fadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Canvas Gosok */
+    .scratch-canvas {
+      touch-action: none;
+      cursor: crosshair;
+    }
+
+    /* Equalizer animasi lagu */
+    .eq-bar {
+      animation: eqBounce 0.8s ease-in-out infinite alternate;
+    }
+    .eq-bar:nth-child(2) { animation-delay: 0.2s; }
+    .eq-bar:nth-child(3) { animation-delay: 0.4s; }
+    .eq-bar:nth-child(4) { animation-delay: 0.15s; }
+    @keyframes eqBounce {
+      0% { height: 4px; }
+      100% { height: 16px; }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#E63956] selection:text-white">
+
+  <!-- =========================================================
+       KONFIGURASI MUDAH DIEDIT (GANTI LAGU, FOTO, TEKS, WALLPAPER)
+       ========================================================= -->
+  <script>
+    const CONFIG = {
+      // 1. IDENTITAS UTAMA
+      namaTeman: "Barik",
+      subjudulHero: " Hii barcodee, sebenernya sih aku pengen bikin ini udah dari lama banget waktu ultahmu ke 29 taon xixixi, tapi waktu itu aku belum bisa coding..sekarang masih belum bisa sih. tapi tapi tapiii aku udah bisa nge promttt wkwkwkwk, tapi tetep ya ini pake promt buatan ku sendiri alias bikinnya juga mikir konsep wkwk.",
+      fotoHero: "assets/hero.jpg",
+
+      // 2. DETAIL LAGU & FILE MP3 (Taruh lagu.mp3 di folder assets/)
+      judulLagu: "Lagunya bernadya yang cuman barik tau",
+      artisLagu: "Curated by Alya's mood • 2026 Edition",
+      coverLagu: "assets/album-cover.jpg",
+      fileAudio: "assets/lagu.mp3", // Otomatis pakai melodi synth bawaan jika file belum ada
+
+      // 3. TEKS UCAPAN & FOTO PROFIL UTAMA
+      judulUcapan: "Words For Barik",
+      paragrafUcapan1: "Selamat bertambah usia, Mas Barik! Maaf ya kado digitalnya baru mendarat sekarang—anggep aja ini edisi deluxe yang butuh proses mastering lebih lama dibanding ucapan standar di jam 00.00.",
+      paragrafUcapan2: "btw sebenernya ini masih sesi paragraf pesan tapi aku gabisa ber word word, mending call aja ga sie?",
+      fotoUtama: "assets/profil.jpg",
+
+      // 4. 4 FOTO ARSIP GOSOK (Simpan di folder assets/ dengan nama di bawah)
+      arsipFoto: [
+        {
+          tahun: "Tahun ketika masih jadi wota",
+          judul: "Era Wota",
+          caption: "Arsip langka yang ditemukan alya di akun tweet ketika masih menjadi wota.",
+          img: "assets/arsip-1.jpg"
+        },
+        {
+          tahun: "2000an",
+          judul: "Masa sekolah barik",
+          caption: "Arsip yang ditemukan alya di akun tweet dan di akun bapak bayu (temennya barik).",
+          img: "assets/arsip-2.jpg"
+        },
+        {
+          tahun: "2000an",
+          judul: "Masa jamet ya ini bar? wkwk",
+          caption: "Bukti nyata kalau barik apa nih??.",
+          img: "assets/arsip-3.jpg"
+        },
+        {
+          tahun: "2026",
+          judul: "Masa Sekarang",
+          caption: "Ini barik habis main ke bromo sama temen temennya trus jaketnya kek couple gitu ya? wkwk.",
+          img: "assets/arsip-4.jpg"
+        }
+      ],
+
+      // 5. DAFTAR HADIAH GACHA GRATIS / ANTI-BONCOS
+      daftarGacha: [
+        {
+          kode: "VCR-MABAR-01",
+          judul: "Voucher Mabar ML / Game Bebas",
+          deskripsi: "Berlaku untuk kapan aja kalo lagi bosen, kalo aku diajak mabar juga bowlehh, kalo mau sih..."
+        },
+        {
+          kode: "VCR-Mancing-02",
+          judul: "Voucher Mancing Bareng Pangkri",
+          deskripsi: "Berlaku kapan aja selama pangkrias mau diajak mancing wkwk."
+        },
+        {
+          kode: "VCR-Mbendol-03",
+          judul: "Voucher Ke Rumah Green Screen ",
+          deskripsi: "Berlaku kapan pun kalau mbendol bolehin main ke green screen housenya."
+        },
+        {
+          kode: "VCR-Ronda-04",
+          judul: "Hak Meronda Barik yang mengabdi kepada Negara",
+          deskripsi: "Kebebasan meronda untuk barik asalkan bertepat di malam pon wkwk."
+        },
+        {
+          kode: "VCR-Call and Chat-05",
+          judul: "Voucher tambahan yang opsional (Bisa diskip sesuai wants)",
+          deskripsi: "Dapat digunakan ketika ingin bercerita namun ga ada tempat cerita, bisa call or chat wlwlwl"
+        }
+      ],
+
+      // 6. 4 WALLPAPER HD BUATAN ALYA (Simpan di folder assets/)
+      wallpapers: [
+        {
+          id: 1,
+          judul: "Midnight Editorial",
+          tema: "Minimalist Dark",
+          file: "assets/wallpaper-1.jpg"
+        },
+        {
+          id: 2,
+          judul: "Crimson Pulse",
+          tema: "Bold Typography",
+          file: "assets/wallpaper-2.jpg"
+        },
+        {
+          id: 3,
+          judul: "Barik Late Drop",
+          tema: "Aesthetic Grain",
+          file: "assets/wallpaper-3.jpg"
+        },
+        {
+          id: 4,
+          judul: "Golden Chapter",
+          tema: "Clean Lockscreen",
+          file: "assets/wallpaper-4.jpg"
+        }
+      ]
+    };
+  </script>
+
+  <!-- =========================================================
+       TOP NAVIGATION & HERO BANNER
+       ========================================================= -->
+  <header id="top" class="relative w-full min-h-[540px] flex flex-col justify-between bg-[#141414] overflow-hidden">
+    <!-- Background Hero Image + Dark Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img id="hero-img" src="" alt="Hero Banner" class="w-full h-full object-cover object-center opacity-45 scale-105 transition-transform duration-1000" />
+      <div class="absolute inset-0 bg-gradient-to-b from-[#141414]/80 via-[#141414]/55 to-[#141414]"></div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="relative z-10 max-w-6xl w-full mx-auto px-6 pt-7 flex flex-col items-center gap-4">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-full border-2 border-white flex items-center justify-center">
+          <svg class="w-4 h-4 text-[#E63956]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 0 0-9 9v7c0 1.1.9 2 2 2h4v-8H5v-1a7 7 0 0 1 14 0v1h-4v8h4c1.1 0 2-.9 2-2v-7a9 9 0 0 0-9-9z"/>
+          </svg>
+        </div>
+        <span class="font-heading font-black tracking-[0.2em] text-base sm:text-lg uppercase">THE LATE DROP</span>
+      </div>
+
+      <!-- Menu Pill Navigasi Stage -->
+      <div class="flex flex-wrap items-center justify-center gap-2 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-xs font-medium">
+        <button onclick="goToStage(1)" id="nav-1" class="nav-pill px-4 py-1.5 rounded-full bg-[#E63956] text-white transition">01. Intro</button>
+        <button onclick="goToStage(2)" id="nav-2" class="nav-pill px-4 py-1.5 rounded-full text-gray-400 hover:text-white transition flex items-center gap-1.5">
+          <span>02. Arsip</span>
+          <span id="lock-2" class="text-[10px]">🔒</span>
+        </button>
+        <button onclick="goToStage(3)" id="nav-3" class="nav-pill px-4 py-1.5 rounded-full text-gray-400 hover:text-white transition flex items-center gap-1.5">
+          <span>03. Gacha & Vibe</span>
+          <span id="lock-3" class="text-[10px]">🔒</span>
+        </button>
+        <button onclick="goToStage(4)" id="nav-4" class="nav-pill px-4 py-1.5 rounded-full text-gray-400 hover:text-white transition flex items-center gap-1.5">
+          <span>04. Wallpapers</span>
+          <span id="lock-4" class="text-[10px]">🔒</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Headline -->
+    <div class="relative z-10 max-w-5xl w-full mx-auto px-6 py-16 md:py-20">
+      <span class="inline-block text-xs font-semibold uppercase tracking-[0.25em] text-[#E63956] mb-3">
+        EXCLUSIVE EDITION • MADE BY ALYA'S MOOD 
+      </span>
+      <h1 class="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl leading-tight max-w-3xl">
+        The Late Drop: <span class="text-[#E63956]">Barik Edition</span>
+      </h1>
+      <p id="hero-sub" class="text-gray-300 text-sm sm:text-base max-w-xl mt-4 leading-relaxed"></p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <button onclick="scrollToContent()" class="px-7 py-3 rounded-full border border-white/40 hover:border-[#E63956] hover:bg-[#E63956] text-xs font-semibold tracking-wider uppercase transition">
+          Mulai Berpetualang ↓
+        </button>
+        <span id="stage-indicator" class="text-xs text-gray-400">Tahap 1 dan terus terus dan seterusnya</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       FULL-WIDTH RED AUDIO BAR
+       ========================================================= -->
+  <section class="w-full bg-[#E63956] py-7 px-6 shadow-2xl relative z-20">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-6">
+      <!-- Thumbnail Bulat -->
+      <div class="relative shrink-0">
+        <img id="audio-cover" src="" alt="Cover Lagu" class="w-20 h-20 rounded-full object-cover border-4 border-white/25 shadow-lg" />
+        <div id="eq-indicator" class="hidden absolute -bottom-1 -right-1 bg-[#141414] px-2 py-1 rounded-full flex items-end gap-0.5 h-6">
+          <span class="eq-bar w-0.5 bg-[#E63956]"></span>
+          <span class="eq-bar w-0.5 bg-[#E63956]"></span>
+          <span class="eq-bar w-0.5 bg-[#E63956]"></span>
+          <span class="eq-bar w-0.5 bg-[#E63956]"></span>
+        </div>
+      </div>
+
+      <!-- Judul & Bar Pemutar Hitam Memanjang -->
+      <div class="flex-1 w-full">
+        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 mb-2.5">
+          <h2 class="font-heading font-bold text-xl text-white tracking-tight">Play ini</h2>
+          <span id="audio-title" class="text-xs text-white/85 font-medium"></span>
+        </div>
+
+        <!-- Bar Hitam -->
+        <div class="w-full bg-[#141414] rounded-sm px-4 py-3 flex items-center gap-4 shadow-inner">
+          <button id="play-btn" onclick="toggleAudio()" class="text-white hover:text-[#E63956] transition flex items-center gap-2 text-xs font-semibold uppercase tracking-wider shrink-0">
+            <svg id="icon-play" class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="icon-pause" class="w-4 h-4 fill-current hidden" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            <span id="play-label">Play Track</span>
+          </button>
+
+          <!-- Progress Bar -->
+          <div class="flex-1 h-1.5 bg-white/15 rounded-full overflow-hidden cursor-pointer" onclick="seekAudio(event)">
+            <div id="audio-progress" class="h-full bg-[#E63956] w-0 transition-all duration-150"></div>
+          </div>
+
+          <span id="audio-status" class="text-[11px] text-gray-400 hidden sm:inline">00:00</span>
+        </div>
+
+        <!-- Statistik Ikon Kecil di Bawah Bar -->
+        <div class="flex items-center gap-6 mt-2.5 text-[11px] text-white/90 font-medium">
+          <button onclick="likeTrack()" class="flex items-center gap-1.5 hover:opacity-80 transition">
+            <span>👍</span> <span id="like-count">24,810</span>
+          </button>
+          <span class="flex items-center gap-1.5">
+            <span>🎧</span> <span>Barik Special Mix</span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span>🎁</span> <span>4 Stages</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <audio id="real-audio" preload="metadata"></audio>
+  </section>
+
+  <!-- =========================================================
+       MAIN CONTENT AREA (BERTAHAP / PROGRESSIVE STAGES)
+       ========================================================= -->
+  <main id="main-journey">
+
+    <!-- -------------------------------------------------------
+         STAGE 1: A FEW WORDS & FOTO BULAT BESAR
+         ------------------------------------------------------- -->
+    <section id="stage-1" class="stage-section stage-fade-in py-20 px-6 bg-[#141414]">
+      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <!-- Teks Ucapan Kiri -->
+        <div class="md:col-span-6 space-y-5">
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#E63956]">STAGE 01 / 04 • EDITORIAL NOTE</span>
+          <h2 id="intro-title" class="font-heading font-extrabold text-3xl sm:text-4xl leading-tight"></h2>
+          <p id="intro-p1" class="text-gray-300 text-sm sm:text-base leading-relaxed"></p>
+          <p id="intro-p2" class="text-gray-400 text-sm leading-relaxed"></p>
+
+          <div class="pt-4">
+            <button onclick="unlockAndGo(2)" class="px-8 py-3.5 rounded-full bg-[#E63956] hover:bg-[#ff4766] text-white text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#E63956]/25 transition">
+              Lanjut ke Stage 02: Arsip Gwosokk →
+            </button>
+          </div>
+        </div>
+
+        <!-- Foto Bulat Besar Kanan + Dekorasi Not Balok -->
+        <div class="md:col-span-6 flex justify-center relative">
+          <div class="relative w-72 h-72 sm:w-80 sm:h-80">
+            <!-- Dekorasi Vektor Not Balok Pink -->
+            <svg class="w-14 h-14 text-[#E63956] absolute -top-4 -left-4 z-20 drop-shadow" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+            </svg>
+            <!-- Foto Lingkaran Utama -->
+            <div class="w-full h-full rounded-full overflow-hidden border-4 border-white/10 shadow-2xl relative z-10 bg-[#1C1C1C]">
+              <img id="intro-img" src="" alt="Foto Utama" class="w-full h-full object-cover" />
+            </div>
+            <!-- Dekorasi Garis Gelombang Putih -->
+            <svg class="w-24 h-24 text-white/30 absolute -bottom-5 -right-5 z-20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 64 64">
+              <path d="M4 44c12-16 20 12 32-4s16 8 24-8" />
+              <path d="M4 52c12-16 20 12 32-4s16 8 24-8" />
+              <circle cx="48" cy="18" r="4" fill="#E63956" stroke="none"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------
+         STAGE 2: ARSIP HASIL STALKING (GOSOK 1 PER 1)
+         ------------------------------------------------------- -->
+    <section id="stage-2" class="stage-section stage-hidden py-20 px-6 red-editorial-bg">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-bold uppercase tracking-[0.25em] text-white/80">STAGE 02 / 04 • CLASSIFIED ARCHIVE</span>
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl mt-2">Arsip Hasil Stalking wkwkwk</h2>
+          <p class="text-white/90 text-sm mt-3">
+            Gosok lapisan perak pada setiap foto secara berurutan (dari <strong>#1 sampai #4</strong>) untuk lanjooottt sesi berikutnyahh!!
+          </p>
+          <div class="mt-4 inline-flex items-center gap-2 bg-black/30 px-4 py-1.5 rounded-full text-xs font-semibold">
+            <span>Yeyy bisa kann:</span>
+            <span id="scratch-progress-text" class="text-yellow-300">0 / 4 Foto</span>
+          </div>
+        </div>
+
+        <!-- Grid 4 Kartu Gosok -->
+        <div id="archive-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Di-render otomatis oleh JavaScript -->
+        </div>
+
+        <!-- Tombol Lanjut Stage 3 -->
+        <div class="mt-12 text-center">
+          <button id="btn-to-stage-3" disabled onclick="unlockAndGo(3)" class="px-8 py-3.5 rounded-full bg-[#141414]/40 text-white/40 cursor-not-allowed text-xs font-bold uppercase tracking-widest transition">
+            🔒 Gosok Semua Foto Dulu ya bwangg (0/4)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------
+         STAGE 3: GACHA ANTI-BONCOS & VIBE CHECK
+         ------------------------------------------------------- -->
+    <section id="stage-3" class="stage-section stage-hidden py-20 px-6 bg-[#141414]">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-xs font-bold uppercase tracking-[0.25em] text-[#E63956]">STAGE 03 / 04 • INTERACTIVE BOOTH</span>
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl mt-2">Gacha Kado & Vibe Check</h2>
+          <p class="text-gray-400 text-sm mt-2">Klaim voucher gratis tanpa syarat dan kasih rating jujur buat halaman ini flisss.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- KARTU 1: GACHA KADO ANTI-BONCOS -->
+          <div class="bg-[#1C1C1C] border border-white/10 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#E63956]">🎰 Gacha Kado yang Terlambat</span>
+                <span class="text-[11px] text-gray-400">Edisi terbatass</span>
+              </div>
+              <h3 class="font-heading font-bold text-xl mb-2">Klaim Voucher</h3>
+              <p class="text-xs text-gray-400 mb-6">Putar mesin gacha di bawah. Nggak cocok sama hadiahnya? Tenang, boleh di-skip & spin ulang!</p>
+
+              <!-- Kotak Hasil Gacha -->
+              <div id="gacha-box" class="bg-[#141414] border border-dashed border-white/20 rounded-xl p-5 min-h-[145px] flex flex-col justify-center items-center text-center">
+                <span class="text-3xl mb-2">🎁</span>
+                <p class="text-sm font-semibold text-gray-300">Belum ada voucher yang diputar</p>
+                <p class="text-xs text-gray-500 mt-1">Klik tombol Spin di bawah untuk mengundi</p>
+              </div>
+            </div>
+
+            <!-- Kontrol Tombol Gacha -->
+            <div class="mt-6 space-y-2.5">
+              <button id="btn-spin-gacha" onclick="spinGacha()" class="w-full py-3 rounded-full bg-[#E63956] hover:bg-[#ff4766] text-white text-xs font-bold uppercase tracking-widest transition">
+                🎲 Spin Gacha Sekarang
+              </button>
+
+              <div id="gacha-decision-btns" class="hidden grid grid-cols-2 gap-2.5">
+                <button onclick="claimGacha()" class="py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider transition">
+                  ✓ Ambil inii
+                </button>
+                <button onclick="spinGacha()" class="py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold uppercase tracking-wider transition">
+                  ↻ Skip / Ulang juga bolehh
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- KARTU 2: VIBE CHECK WEBSITE INI -->
+          <div class="bg-[#1C1C1C] border border-white/10 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-[#E63956]">📊 Vibe Check</span>
+              <h3 class="font-heading font-bold text-xl mt-3 mb-2">barr jawab jujur yaa, gimana rasanya dapet website ini??</h3>
+              <p class="text-xs text-gray-400 mb-6">Pilih satu reaksi yang paling mewakili isi heart mu sekarang:</p>
+
+              <div class="space-y-2.5" id="vibe-options">
+                <button onclick="selectVibe('Terharu parah sampe pengen ngesot, niat banget bikinnya 😭🔥', 'emangg..selain harus pake mood aku bikinnya juga pake niat wkwkwk')" class="vibe-btn w-full text-left px-4 py-3 rounded-xl bg-[#141414] hover:border-[#E63956] border border-white/10 text-xs sm:text-sm transition flex items-center justify-between">
+                  <span>😭🔥 Terharu parah sampe pengen ngesot, niat banget bikinnya</span>
+                  <span class="text-gray-500">→</span>
+                </button>
+                <button onclick="selectVibe('Keren sih desainya, berasa rilis album musik 🎧✨', 'wooo jelass, kan aku itu selain smart people aku juga jago desain dongg')" class="vibe-btn w-full text-left px-4 py-3 rounded-xl bg-[#141414] hover:border-[#E63956] border border-white/10 text-xs sm:text-sm transition flex items-center justify-between">
+                  <span>🎧✨ Keren sih, berasa rilis album musik</span>
+                  <span class="text-gray-500">→</span>
+                </button>
+                <button onclick="selectVibe('Ngakak pas bagian foto arsip aib 😂📸', 'Aku pinter stalking kan barr??, tiap aku stalking kamu trus ketemu rasanya kek nemu jackpot wkwkwk lucuu.')" class="vibe-btn w-full text-left px-4 py-3 rounded-xl bg-[#141414] hover:border-[#E63956] border border-white/10 text-xs sm:text-sm transition flex items-center justify-between">
+                  <span>😂📸 Ngakak pas bagian foto arsip aib</span>
+                  <span class="text-gray-500">→</span>
+                </button>
+                <button onclick="selectVibe('Telat sih, tapi dimaafin karena estetik 😎👌', 'intinya Better late than never, gitu kaksss.')" class="vibe-btn w-full text-left px-4 py-3 rounded-xl bg-[#141414] hover:border-[#E63956] border border-white/10 text-xs sm:text-sm transition flex items-center justify-between">
+                  <span>😎👌 kadonya telat sih, tapi dimaafin karena estetik</span>
+                  <span class="text-gray-500">→</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Balasan Otomatis Vibe Check -->
+            <div id="vibe-feedback" class="hidden mt-5 p-4 rounded-xl bg-[#E63956]/15 border border-[#E63956]/40 text-xs text-gray-200 leading-relaxed">
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Lanjut Stage 4 -->
+        <div class="mt-12 text-center">
+          <button id="btn-to-stage-4" disabled onclick="unlockAndGo(4)" class="px-8 py-3.5 rounded-full bg-white/10 text-gray-500 cursor-not-allowed text-xs font-bold uppercase tracking-widest transition">
+            🔒 Ambil Voucher Gacha & Pilih Vibe Check Dulu
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- -------------------------------------------------------
+         STAGE 4: WALLPAPER VAULT & TIKET REKAP FINAL
+         ------------------------------------------------------- -->
+    <section id="stage-4" class="stage-section stage-hidden py-20 px-6 bg-[#101010] border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <!-- Tiket Ringkasan Klaim Hadiah -->
+        <div class="max-w-2xl mx-auto mb-16 bg-gradient-to-r from-[#1C1C1C] to-[#241619] border border-[#E63956]/40 rounded-2xl p-6 sm:p-8 shadow-2xl">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4 mb-4">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-widest text-[#E63956]">OFFICIAL CLAIM TICKET</span>
+              <h3 class="font-heading font-bold text-lg">Bukti Klaim Hadiah — Barik Edition</h3>
+            </div>
+            <button onclick="copyReceipt()" id="btn-copy-receipt" class="px-4 py-2 rounded-full bg-[#E63956] hover:bg-[#ff4766] text-white text-xs font-semibold transition">
+              📋 Salin Tiket Buat Dikirim
+            </button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="bg-black/30 p-3.5 rounded-xl">
+              <span class="text-gray-400 block mb-1">Voucher Terpilih:</span>
+              <strong id="summary-voucher" class="text-white text-sm">-</strong>
+            </div>
+            <div class="bg-black/30 p-3.5 rounded-xl">
+              <span class="text-gray-400 block mb-1">Vibe Check Kamu:</span>
+              <strong id="summary-vibe" class="text-white text-sm">-</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Judul Wallpaper Vault -->
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-bold uppercase tracking-[0.25em] text-[#E63956]">STAGE 04 / 04 • MAIN GIFT</span>
+          <h2 class="font-heading font-extrabold text-3xl sm:text-4xl mt-2">Wallpaper Vault</h2>
+          <p class="text-gray-400 text-sm mt-2">
+            Hadiah utama siap diunduh! Klik mockup HP untuk preview layar penuh atau langsung tekan tombol <strong>Download HD</strong>.
+          </p>
+        </div>
+
+        <!-- Grid 4 Mockup Layar HP -->
+        <div id="wallpaper-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Di-render otomatis oleh JavaScript -->
+        </div>
+
+        <!-- Tombol Lihat Semua Bagian Sekaligus -->
+        <div class="mt-16 text-center">
+          <button onclick="showAllSections()" class="px-6 py-2.5 rounded-full border border-white/20 hover:border-white text-xs text-gray-300 hover:text-white transition">
+            Tampilkan Semua Bagian dalam 1 Halaman Penuh
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       MODAL PREVIEW WALLPAPER LAYAR PENUH
+       ========================================================= -->
+  <div id="preview-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="relative max-w-xs w-full flex flex-col items-center">
+      <button onclick="closePreview()" class="self-end mb-3 px-3 py-1 rounded-full bg-white/10 hover:bg-[#E63956] text-xs font-semibold transition">
+        ✕ Tutup Preview
+      </button>
+
+      <!-- Frame HP Lockscreen -->
+      <div class="w-[280px] h-[560px] rounded-[38px] border-[6px] border-neutral-800 bg-black overflow-hidden relative shadow-2xl">
+        <img id="modal-wp-img" src="" alt="Preview Wallpaper" class="w-full h-full object-cover" />
+        <!-- Overlay Jam Lockscreen -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50 flex flex-col items-center pt-12 text-white pointer-events-none">
+          <span class="text-xs tracking-widest uppercase opacity-80">Selasa, 24 November</span>
+          <span class="font-heading font-bold text-6xl tracking-tight mt-1">09:41</span>
+        </div>
+      </div>
+
+      <a id="modal-download-btn" href="#" download class="mt-5 w-full py-3 rounded-full bg-[#E63956] hover:bg-[#ff4766] text-center text-xs font-bold uppercase tracking-widest shadow-lg transition">
+        ⬇ Download Wallpaper HD
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#0D0D0D] border-t border-white/5 py-8 px-6 text-center text-xs text-gray-500">
+    <p>THE LATE DROP: BARIK EDITION • Exclusive Edition Made by <span class="text-gray-300 font-semibold">Alya's Mood</span></p>
+  </footer>
+
+  <!-- =========================================================
+       LOGIKA INTERAKTIF JAVASCRIPT
+       ========================================================= -->
+  <script>
+    // State Aplikasi
+    let maxUnlockedStage = 1;
+    let currentStage = 1;
+    let scratchedCount = 0;
+    let activeScratchIndex = 0; // Harus gosok berurutan 0 -> 1 -> 2 -> 3
+    let currentGachaCandidate = null;
+    let claimedVoucher = null;
+    let selectedVibeText = null;
+    let isFreeBrowseMode = false;
+
+    // Fallback SVG Data URI jika foto di folder assets/ belum dimasukkan user
+    function createFallbackSVG(label, bg1 = "#262626", bg2 = "#E63956") {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="${bg1}"/>
+            <stop offset="100%" stop-color="${bg2}"/>
+          </linearGradient>
+        </defs>
+        <rect width="800" height="1000" fill="url(#g)"/>
+        <circle cx="400" cy="450" r="180" fill="rgba(255,255,255,0.08)"/>
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="32">${label}</text>
+        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="sans-serif" font-size="18">Simpan file di folder assets/</text>
+      </svg>`;
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+
+    function setImgWithFallback(imgEl, src, fallbackLabel) {
+      imgEl.src = src;
+      imgEl.onerror = () => {
+        imgEl.onerror = null;
+        imgEl.src = createFallbackSVG(fallbackLabel);
+      };
+    }
+
+    // Inisialisasi Konten dari CONFIG
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("hero-sub").textContent = CONFIG.subjudulHero;
+      setImgWithFallback(document.getElementById("hero-img"), CONFIG.fotoHero, "HERO PHOTO (assets/hero.jpg)");
+
+      document.getElementById("audio-title").textContent = `${CONFIG.judulLagu} — ${CONFIG.artisLagu}`;
+      setImgWithFallback(document.getElementById("audio-cover"), CONFIG.coverLagu, "COVER");
+
+      document.getElementById("intro-title").textContent = CONFIG.judulUcapan;
+      document.getElementById("intro-p1").textContent = CONFIG.paragrafUcapan1;
+      document.getElementById("intro-p2").textContent = CONFIG.paragrafUcapan2;
+      setImgWithFallback(document.getElementById("intro-img"), CONFIG.fotoUtama, "FOTO UTAMA (assets/profil.jpg)");
+
+      initAudioPlayer();
+      renderArchiveCards();
+      renderWallpaperCards();
+    });
+
+    // =========================================================
+    // NAVIGASI TAHAPAN (STAGE FLOW)
+    // =========================================================
+    function scrollToContent() {
+      document.getElementById("main-journey").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function goToStage(stageNum) {
+      if (!isFreeBrowseMode && stageNum > maxUnlockedStage) {
+        alert(`Selesaikan Stage 0${maxUnlockedStage} terlebih dahulu untuk membuka tahap ini!`);
+        return;
+      }
+
+      currentStage = stageNum;
+
+      if (!isFreeBrowseMode) {
+        for (let i = 1; i <= 4; i++) {
+          const sec = document.getElementById(`stage-${i}`);
+          if (i === stageNum) {
+            sec.classList.remove("stage-hidden");
+            sec.classList.add("stage-fade-in");
+          } else {
+            sec.classList.add("stage-hidden");
+            sec.classList.remove("stage-fade-in");
+          }
+        }
+      }
+
+      updateNavPills();
+      document.getElementById(`stage-${stageNum}`).scrollIntoView({ behavior: "smooth" });
+    }
+
+    function unlockAndGo(nextStage) {
+      if (nextStage > maxUnlockedStage) {
+        maxUnlockedStage = nextStage;
+        const lockIcon = document.getElementById(`lock-${nextStage}`);
+        if (lockIcon) lockIcon.remove();
+        document.getElementById("stage-indicator").textContent = `Tahap ${maxUnlockedStage} dari 4 terbuka`;
+      }
+      goToStage(nextStage);
+    }
+
+    function updateNavPills() {
+      for (let i = 1; i <= 4; i++) {
+        const pill = document.getElementById(`nav-${i}`);
+        if (i === currentStage) {
+          pill.className = "nav-pill px-4 py-1.5 rounded-full bg-[#E63956] text-white transition font-semibold";
+        } else if (i <= maxUnlockedStage) {
+          pill.className = "nav-pill px-4 py-1.5 rounded-full text-white hover:bg-white/10 transition flex items-center gap-1.5";
+        } else {
+          pill.className = "nav-pill px-4 py-1.5 rounded-full text-gray-500 cursor-not-allowed transition flex items-center gap-1.5";
+        }
+      }
+    }
+
+    function showAllSections() {
+      isFreeBrowseMode = true;
+      for (let i = 1; i <= 4; i++) {
+        const sec = document.getElementById(`stage-${i}`);
+        sec.classList.remove("stage-hidden");
+      }
+      window.scrollTo({ top: document.getElementById("stage-1").offsetTop, behavior: "smooth" });
+    }
+
+    // =========================================================
+    // AUDIO PLAYER (MP3 ASLI + FALLBACK MELODI SYNTH BROWSER)
+    // =========================================================
+    let isPlaying = false;
+    let useSynthFallback = false;
+    let audioCtx = null;
+    let synthInterval = null;
+    let synthStep = 0;
+
+    function initAudioPlayer() {
+      const audio = document.getElementById("real-audio");
+      audio.src = CONFIG.fileAudio;
+
+      audio.onerror = () => {
+        useSynthFallback = true;
+      };
+
+      audio.addEventListener("timeupdate", () => {
+        if (audio.duration) {
+          const pct = (audio.currentTime / audio.duration) * 100;
+          document.getElementById("audio-progress").style.width = `${pct}%`;
+          const mins = Math.floor(audio.currentTime / 60).toString().padStart(2, "0");
+          const secs = Math.floor(audio.currentTime % 60).toString().padStart(2, "0");
+          document.getElementById("audio-status").textContent = `${mins}:${secs}`;
+        }
+      });
+
+      audio.addEventListener("ended", () => {
+        setPlayingUI(false);
+      });
+    }
+
+    function toggleAudio() {
+      if (isPlaying) {
+        stopAudio();
+      } else {
+        startAudio();
+      }
+    }
+
+    function startAudio() {
+      const audio = document.getElementById("real-audio");
+      if (!useSynthFallback) {
+        audio.play().then(() => {
+          setPlayingUI(true);
+        }).catch(() => {
+          useSynthFallback = true;
+          playSynthBirthday();
+          setPlayingUI(true);
+        });
+      } else {
+        playSynthBirthday();
+        setPlayingUI(true);
+      }
+    }
+
+    function stopAudio() {
+      const audio = document.getElementById("real-audio");
+      audio.pause();
+      if (synthInterval) clearInterval(synthInterval);
+      setPlayingUI(false);
+    }
+
+    function setPlayingUI(playing) {
+      isPlaying = playing;
+      document.getElementById("icon-play").classList.toggle("hidden", playing);
+      document.getElementById("icon-pause").classList.toggle("hidden", !playing);
+      document.getElementById("play-label").textContent = playing ? "Pause" : "Play Track";
+      document.getElementById("eq-indicator").classList.toggle("hidden", !playing);
+    }
+
+    function playSynthBirthday() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const notes = [
+        261.63, 261.63, 293.66, 261.63, 349.23, 329.63,
+        261.63, 261.63, 293.66, 261.63, 392.00, 349.23,
+        261.63, 261.63, 523.25, 440.00, 349.23, 329.63, 293.66,
+        466.16, 466.16, 440.00, 349.23, 392.00, 349.23
+      ];
+      synthStep = 0;
+      document.getElementById("audio-status").textContent = "Synth Mode";
+
+      synthInterval = setInterval(() => {
+        const freq = notes[synthStep % notes.length];
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.36);
+
+        synthStep++;
+        const pct = ((synthStep % notes.length) / notes.length) * 100;
+        document.getElementById("audio-progress").style.width = `${pct}%`;
+      }, 420);
+    }
+
+    function seekAudio(e) {
+      const audio = document.getElementById("real-audio");
+      if (!useSynthFallback && audio.duration) {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = pct * audio.duration;
+      }
+    }
+
+    let liked = false;
+    function likeTrack() {
+      if (!liked) {
+        liked = true;
+        document.getElementById("like-count").textContent = "24,811 ❤️";
+      }
+    }
+
+    // =========================================================
+    // STAGE 2: ARSIP GOSOK 1 PER 1 (SEQUENTIAL SCRATCH CARDS)
+    // =========================================================
+    function renderArchiveCards() {
+      const grid = document.getElementById("archive-grid");
+      grid.innerHTML = "";
+
+      CONFIG.arsipFoto.forEach((item, idx) => {
+        const card = document.createElement("div");
+        card.id = `archive-card-${idx}`;
+        card.className = "bg-[#141414]/90 rounded-xl overflow-hidden shadow-2xl border border-white/15 flex flex-col transition-all";
+
+        card.innerHTML = `
+          <div class="relative aspect-[4/5] w-full bg-neutral-900 overflow-hidden select-none">
+            <!-- Foto Asli di Lapisan Bawah -->
+            <img id="arsip-img-${idx}" src="" alt="${item.judul}" class="w-full h-full object-cover" />
+
+            <!-- Badge Tahun Pojok Kanan Atas -->
+            <div class="absolute top-3 right-3 bg-white text-[#141414] px-2.5 py-1 rounded text-center shadow z-10">
+              <span class="block text-[9px] font-bold uppercase tracking-wider text-[#E63956]">YEAR</span>
+              <span class="font-heading font-extrabold text-xs">${item.tahun}</span>
+            </div>
+
+            <!-- Canvas Lapisan Gosok -->
+            <canvas id="scratch-canvas-${idx}" class="scratch-canvas absolute inset-0 w-full h-full z-20"></canvas>
+
+            <!-- Overlay Terkunci Jika Belum Gilirannya -->
+            <div id="scratch-lock-${idx}" class="${idx === 0 ? 'hidden' : ''} absolute inset-0 z-30 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center p-4 text-center">
+              <span class="text-2xl mb-1.5">🔒</span>
+              <p class="text-xs font-bold uppercase tracking-wider text-white">Foto #${idx + 1} Terkunci</p>
+              <p class="text-[11px] text-gray-400 mt-1">Gosok Foto #${idx} terlebih dahulu</p>
+            </div>
+          </div>
+
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-base text-white">${item.judul}</h3>
+                <span id="status-badge-${idx}" class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-gray-300">
+                  ${idx === 0 ? 'Siap Digosok' : 'Terkunci'}
+                </span>
+              </div>
+              <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">${item.caption}</p>
+            </div>
+
+            <!-- Tombol Bantuan Buka Cepat -->
+            <button id="quick-reveal-${idx}" onclick="revealCard(${idx})" class="${idx === 0 ? '' : 'hidden'} mt-3 w-full py-1.5 rounded bg-white/10 hover:bg-[#E63956] text-[11px] font-semibold text-white transition">
+              ✨ Buka Langsung
+            </button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+        setImgWithFallback(document.getElementById(`arsip-img-${idx}`), item.img, `ARSIP ${item.tahun}`);
+        setupScratchCanvas(idx, item.tahun);
+      });
+    }
+
+    function setupScratchCanvas(idx, yearText) {
+      const canvas = document.getElementById(`scratch-canvas-${idx}`);
+      const ctx = canvas.getContext("2d");
+      const width = 320;
+      const height = 400;
+      canvas.width = width;
+      canvas.height = height;
+
+      const grad = ctx.createLinearGradient(0, 0, width, height);
+      grad.addColorStop(0, "#3a3a3a");
+      grad.addColorStop(0.5, "#525252");
+      grad.addColorStop(1, "#2b2b2b");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = "rgba(255,255,255,0.85)";
+      ctx.font = "bold 20px Montserrat, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(`ARSIP #${idx + 1} (${yearText})`, width / 2, height / 2 - 10);
+      ctx.font = "14px Inter, sans-serif";
+      ctx.fillStyle = "#E63956";
+      ctx.fillText("Usap / Gosok Area Ini", width / 2, height / 2 + 18);
+
+      let isDrawing = false;
+      let revealed = false;
+
+      function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: ((clientX - rect.left) / rect.width) * width,
+          y: ((clientY - rect.top) / rect.height) * height
+        };
+      }
+
+      function scratch(e) {
+        if (!isDrawing || revealed || idx !== activeScratchIndex) return;
+        e.preventDefault();
+        const pos = getPos(e);
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 32, 0, Math.PI * 2);
+        ctx.fill();
+        checkScratchPercentage();
+      }
+
+      function checkScratchPercentage() {
+        const pixels = ctx.getImageData(0, 0, width, height).data;
+        let transparent = 0;
+        for (let i = 3; i < pixels.length; i += 32) {
+          if (pixels[i] < 128) transparent++;
+        }
+        const ratio = transparent / (pixels.length / 32);
+        if (ratio > 0.42 && !revealed) {
+          revealed = true;
+          revealCard(idx);
+        }
+      }
+
+      canvas.addEventListener("mousedown", (e) => { isDrawing = true; scratch(e); });
+      canvas.addEventListener("mousemove", scratch);
+      window.addEventListener("mouseup", () => { isDrawing = false; });
+
+      canvas.addEventListener("touchstart", (e) => { isDrawing = true; scratch(e); }, { passive: false });
+      canvas.addEventListener("touchmove", scratch, { passive: false });
+      canvas.addEventListener("touchend", () => { isDrawing = false; });
+    }
+
+    function revealCard(idx) {
+      const canvas = document.getElementById(`scratch-canvas-${idx}`);
+      if (canvas.classList.contains("hidden")) return;
+
+      canvas.classList.add("hidden");
+      document.getElementById(`quick-reveal-${idx}`).classList.add("hidden");
+      const badge = document.getElementById(`status-badge-${idx}`);
+      badge.textContent = "Terbuka ✓";
+      badge.className = "text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold";
+
+      scratchedCount++;
+      document.getElementById("scratch-progress-text").textContent = `${scratchedCount} / ${CONFIG.arsipFoto.length} Foto`;
+
+      const nextIdx = idx + 1;
+      if (nextIdx < CONFIG.arsipFoto.length) {
+        activeScratchIndex = nextIdx;
+        document.getElementById(`scratch-lock-${nextIdx}`).classList.add("hidden");
+        document.getElementById(`quick-reveal-${nextIdx}`).classList.remove("hidden");
+        const nextBadge = document.getElementById(`status-badge-${nextIdx}`);
+        nextBadge.textContent = "Siap Digosok";
+        nextBadge.className = "text-[10px] px-2 py-0.5 rounded bg-[#E63956] text-white font-semibold";
+      } else {
+        const btn = document.getElementById("btn-to-stage-3");
+        btn.disabled = false;
+        btn.className = "px-8 py-3.5 rounded-full bg-[#141414] hover:bg-black text-white text-xs font-bold uppercase tracking-widest shadow-xl transition cursor-pointer";
+        btn.textContent = "Lanjut ke Stage 03: Gacha & Vibe Check →";
+      }
+    }
+
+    // =========================================================
+    // STAGE 3: GACHA ANTI-BONCOS & VIBE CHECK
+    // =========================================================
+    let lastGachaIdx = -1;
+
+    function spinGacha() {
+      const box = document.getElementById("gacha-box");
+      const spinBtn = document.getElementById("btn-spin-gacha");
+      const decisionBtns = document.getElementById("gacha-decision-btns");
+
+      spinBtn.disabled = true;
+      decisionBtns.classList.add("hidden");
+      box.innerHTML = `<span class="text-3xl animate-spin">🎰</span><p class="text-xs text-gray-400 mt-2">Mengundi voucher gratis...</p>`;
+
+      setTimeout(() => {
+        let randIdx;
+        do {
+          randIdx = Math.floor(Math.random() * CONFIG.daftarGacha.length);
+        } while (randIdx === lastGachaIdx && CONFIG.daftarGacha.length > 1);
+
+        lastGachaIdx = randIdx;
+        currentGachaCandidate = CONFIG.daftarGacha[randIdx];
+
+        box.innerHTML = `
+          <span class="text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded bg-[#E63956]/20 text-[#E63956] mb-2">${currentGachaCandidate.kode}</span>
+          <h4 class="font-heading font-bold text-base text-white">${currentGachaCandidate.judul}</h4>
+          <p class="text-xs text-gray-400 mt-1.5 leading-relaxed">${currentGachaCandidate.deskripsi}</p>
+        `;
+
+        spinBtn.classList.add("hidden");
+        spinBtn.disabled = false;
+        decisionBtns.classList.remove("hidden");
+      }, 500);
+    }
+
+    function claimGacha() {
+      if (!currentGachaCandidate) return;
+      claimedVoucher = currentGachaCandidate;
+
+      const box = document.getElementById("gacha-box");
+      box.className = "bg-emerald-950/30 border border-emerald-500/40 rounded-xl p-5 min-h-[145px] flex flex-col justify-center items-center text-center";
+      box.innerHTML = `
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">✓ VOUCHER DIKLAIM</span>
+        <h4 class="font-heading font-bold text-base text-white">${claimedVoucher.judul}</h4>
+        <p class="text-[11px] text-gray-300 mt-1">${claimedVoucher.kode}</p>
+      `;
+
+      document.getElementById("gacha-decision-btns").classList.add("hidden");
+      document.getElementById("summary-voucher").textContent = `${claimedVoucher.judul} (${claimedVoucher.kode})`;
+      checkStage3Completion();
+    }
+
+    function selectVibe(choiceText, replyText) {
+      selectedVibeText = choiceText;
+      document.getElementById("summary-vibe").textContent = choiceText;
+
+      const fb = document.getElementById("vibe-feedback");
+      fb.classList.remove("hidden");
+      fb.innerHTML = `<strong class="text-white block mb-1">Catatan Balasan:</strong> ${replyText}`;
+
+      checkStage3Completion();
+    }
+
+    function checkStage3Completion() {
+      if (claimedVoucher && selectedVibeText) {
+        const btn = document.getElementById("btn-to-stage-4");
+        btn.disabled = false;
+        btn.className = "px-8 py-3.5 rounded-full bg-[#E63956] hover:bg-[#ff4766] text-white text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#E63956]/25 transition cursor-pointer";
+        btn.textContent = "Buka Stage 04: Wallpaper Vault HD →";
+      }
+    }
+
+    // =========================================================
+    // STAGE 4: WALLPAPER VAULT & PREVIEW LOCKSCREEN
+    // =========================================================
+    function renderWallpaperCards() {
+      const grid = document.getElementById("wallpaper-grid");
+      grid.innerHTML = "";
+
+      CONFIG.wallpapers.forEach((wp) => {
+        const card = document.createElement("div");
+        card.className = "bg-[#1C1C1C] border border-white/10 rounded-2xl p-5 flex flex-col items-center text-center hover:border-[#E63956]/60 transition group";
+
+        card.innerHTML = `
+          <!-- Mockup Bingkai HP -->
+          <div onclick="openPreview('${wp.file}', '${wp.judul}')" class="w-44 h-80 rounded-[26px] border-4 border-neutral-800 bg-black overflow-hidden relative shadow-xl cursor-pointer group-hover:scale-[1.02] transition-transform">
+            <img id="wp-thumb-${wp.id}" src="" alt="${wp.judul}" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 px-3 py-1.5 rounded-full bg-white text-black text-[11px] font-bold transition">
+                👁 Preview HP
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-4 w-full">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#E63956]">${wp.tema}</span>
+            <h3 class="font-heading font-bold text-base mt-0.5">${wp.judul}</h3>
+
+            <div class="mt-4 grid grid-cols-2 gap-2">
+              <button onclick="openPreview('${wp.file}', '${wp.judul}')" class="py-2 rounded-full bg-white/10 hover:bg-white/20 text-[11px] font-semibold transition">
+                Preview
+              </button>
+              <a id="wp-dl-${wp.id}" href="${wp.file}" download="${wp.judul.replace(/\s+/g, '-')}.png" class="py-2 rounded-full bg-[#E63956] hover:bg-[#ff4766] text-[11px] font-bold transition">
+                Download HD
+              </a>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+
+        const imgEl = document.getElementById(`wp-thumb-${wp.id}`);
+        const fallbackUrl = createFallbackSVG(wp.judul.toUpperCase(), "#141414", "#E63956");
+        imgEl.src = wp.file;
+        imgEl.onerror = () => {
+          imgEl.onerror = null;
+          imgEl.src = fallbackUrl;
+          document.getElementById(`wp-dl-${wp.id}`).href = fallbackUrl;
+        };
+      });
+    }
+
+    function openPreview(fileSrc, title) {
+      const modal = document.getElementById("preview-modal");
+      const img = document.getElementById("modal-wp-img");
+      const dl = document.getElementById("modal-download-btn");
+      const fallbackUrl = createFallbackSVG(title.toUpperCase(), "#141414", "#E63956");
+
+      img.src = fileSrc;
+      dl.href = fileSrc;
+      dl.download = `${title.replace(/\s+/g, "-")}.jpg`;
+
+      img.onerror = () => {
+        img.onerror = null;
+        img.src = fallbackUrl;
+        dl.href = fallbackUrl;
+      };
+
+      modal.classList.remove("hidden");
+    }
+
+    function closePreview() {
+      document.getElementById("preview-modal").classList.add("hidden");
+    }
+
+    function copyReceipt() {
+      const text = `🎟️ TIKET KLAIM THE LATE DROP: BARIK EDITION\n• Voucher Hadiah: ${claimedVoucher ? claimedVoucher.judul + " (" + claimedVoucher.kode + ")" : "-"}\n• Vibe Check: ${selectedVibeText || "-"}\n• Made by Alya's Creativity ✨`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById("btn-copy-receipt");
+        btn.textContent = "✓ Tiket Tersalin!";
+        setTimeout(() => { btn.textContent = "📋 Salin Tiket Buat Dikirim"; }, 2500);
+      });
+    }
+  </script>
+</body>
+</html>
